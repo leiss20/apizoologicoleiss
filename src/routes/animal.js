@@ -1,14 +1,12 @@
 const express = require("express");
-const router = express.Router();
+const router = express.Router(); //manejador de rutas de express
 const animalSchema = require("../models/animal");
-
-router.post("/animals",(req,res) => {
-    const animal = animalSchema(req,body);
+//Nuevo animal
+router.post("/animals", (req, res) => {
+    const animal = animalSchema(req.body);
     animal
         .save()
-        .then((data)=> res,json(data))
-        .catch((errar) => res,json({ message: error}));
-
-
+        .then((data) => res.json(data))
+        .catch((error) => res.json({ message: error }));
 });
-module.export = router;
+module.exports = router;
